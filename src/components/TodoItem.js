@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import styles from './TodoItem.module.css';
 import { FaTrash } from 'react-icons/fa';
+import styles from './TodoItem.module.css';
 
-function TodoItem(props) {
+const TodoItem = (props) => {
   const [editing, setEdit] = useState(false);
   const completedStyle = {
     fontStyle: 'italic',
@@ -21,10 +22,16 @@ function TodoItem(props) {
     }
   };
 
-  const { index, todo, onChange, onDelete, setUpdate } = props;
+  const {
+    index,
+    todo,
+    onChange,
+    onDelete,
+    setUpdate,
+  } = props;
   const { completed, title } = todo;
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -42,6 +49,7 @@ function TodoItem(props) {
           }}
         />
         <button
+          type="submit"
           onClick={() => {
             onDelete(index);
           }}
@@ -60,6 +68,22 @@ function TodoItem(props) {
       />
     </li>
   );
-}
+};
+
+TodoItem.defaultProps = {
+  index: null,
+  onChange: null,
+  todo: null,
+  onDelete: null,
+  setUpdate: null,
+};
+
+TodoItem.propTypes = {
+  index: PropTypes.number,
+  onChange: PropTypes.func,
+  todo: PropTypes.string,
+  onDelete: PropTypes.func,
+  setUpdate: PropTypes.func,
+};
 
 export default TodoItem;

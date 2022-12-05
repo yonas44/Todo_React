@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import TodoContainer from './components/TodoContainer';
 import { BrowserRouter as Router } from 'react-router-dom';
+import TodoContainer from './components/TodoContainer';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import './App.css';
@@ -12,7 +12,7 @@ root.render(
     <Router>
       <TodoContainer />
     </Router>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 reportWebVitals();

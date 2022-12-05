@@ -8,14 +8,14 @@ import SinglePage from './SinglePage';
 import TodoApp from './TodoApp';
 
 class TodoContainer extends React.Component {
-  state = {
-    todos: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      todos: [],
+    };
+  }
 
   componentDidMount() {
-    // fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    //   .then((response) => response.json())
-    //   .then((data) => this.setState({ todos: data }));
     const temp = localStorage.getItem('todos');
     const loadedTodos = JSON.parse(temp);
     if (loadedTodos) {
@@ -26,27 +26,28 @@ class TodoContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.todos !== this.state.todos) {
-      const temp = JSON.stringify(this.state.todos);
+    const { todos } = this.state;
+    if (prevState.todos !== todos) {
+      const temp = JSON.stringify(todos);
       localStorage.setItem('todos', temp);
     }
   }
 
   handleChange = (index) => {
-    let { todos } = this.state;
+    const { todos } = this.state;
     todos[index].completed = !todos[index].completed;
     this.setState(({ todos }) => todos);
   };
 
   delTodo = (index) => {
-    let { todos } = this.state;
+    const { todos } = this.state;
     todos.splice(index, 1);
     this.setState(({ todos }) => todos);
   };
 
   handleNewTodo = (input) => {
-    let { todos } = this.state;
-    let todo = {
+    const { todos } = this.state;
+    const todo = {
       id: uuidv4(),
       title: input,
       completed: false,
@@ -56,25 +57,28 @@ class TodoContainer extends React.Component {
   };
 
   setUpdate = (event, index) => {
-    let { todos } = this.state;
+    const { todos } = this.state;
     todos[index].title = event;
     this.setState({ todos });
   };
 
   render() {
+    const { todos } = this.state;
     return (
       <>
         <Navbar />
         <Routes>
           <Route
             element={
-              <TodoApp
-                setUpdate={this.setUpdate}
-                delTodo={this.delTodo}
-                handleNewTodo={this.handleNewTodo}
-                todos={this.state.todos}
-                handleChange={this.handleChange}
-              />
+              (
+                <TodoApp
+                  setUpdate={this.setUpdate}
+                  delTodo={this.delTodo}
+                  handleNewTodo={this.handleNewTodo}
+                  todos={todos}
+                  handleChange={this.handleChange}
+                />
+              )
             }
             exact
             path="/"
