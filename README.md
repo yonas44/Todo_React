@@ -32,8 +32,6 @@
 
 # 📖 Todo_App(React) <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
-
 **Todo_App** is a project which is created using create-react-app boiler template. For this project I built a todo app which will allows users to add, edit and remove a todo task from the list.
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -61,7 +59,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://yonas44.github.io/Todo_React/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

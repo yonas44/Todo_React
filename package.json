@@ -2,7 +2,7 @@
   "name": "todo_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yonas44.github.io/Todo_React",
+  "homepage": "https://yonas44.github.io/Todo_React/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
